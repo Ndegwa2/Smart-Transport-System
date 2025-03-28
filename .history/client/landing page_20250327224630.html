@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: orange;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+}
+
+.sign-in-out button {
+    background-color: orange;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-out button:hover {
+    background-color: #d97706;
+}
+
+.account-icon img {
+    height: 30px;
+    border-radius: 50%;
+}
+
+main {
+    padding: 50px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    color: orange;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.mission-vision-contacts {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card {
+    width: 30%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slideshow {
+    margin-top: 15px;
+}
+
+.slideshow-container {
+    display: flex;
+    overflow: hidden;
+}
+
+.slide {
+    width: 100%;
+    flex-shrink: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+.about-us {
+    margin-top: 15px;
+    text-align: justify;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.routes {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.routes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.routes li {
+    margin-bottom: 10px;
+}
+
+.route-list {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+.route-list li {
+    text-align: center;
+}
+
+.route-list img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.route-list img:hover {
+    transform: scale(1.1);
+}
+
+.route-list span {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+}</style>
+    <header>
+        <div class="logo">
+            <img src="10550142.jpg" alt="Sacco Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Routes</a></li>
+                <li><a href="#">Fleet</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Bookings</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <div class="sign-in-out">
+                <button>Sign In</button>
+                <button>Sign Out</button>
+            </div>
+            <div class="account-icon">
+                <img src="user-front-side-with-white-background.jpg" alt="Account">
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to our Transport Management System</h1>
+            <p>Your trusted partner for efficient and reliable transportation solutions.</p>
+        </section>
+        
+
+        <section class="slideshow">
+            <h2>Personnel, Fleet and Routes</h2>
+            <div class="slideshow-container">
+                <div class="slide">
+                    <img src="freepik__upload__24644.jpeg" alt="Cashless Payment">
+                </div>
+                <div class="slide">
+                    <img src="young-adult-travelling-winter-time_23-2149211145.avif" alt="Clients">
+                </div>
+                <div class="slide">
+                    <img src="personel.avif" alt="Personel">
+                </div>
+            </div>
+        </section>
+
+        <section class="about-us">
+            <h2>About Us</h2>
+            <p>We are a transport management system dedicated to providing efficient
+                 and reliable transportation solutions. <br>
+                 Our mission is to connect people and businesses with safe and affordable transport options.<br>
+                
+                 At Velocity, we specialize in smart transport solutions that revolutionize fleet management.<br>
+                  Our advanced real-time tracking system ensures seamless and efficient transportation, 
+                  reducing delays and optimizing routes for both passengers and operators.<br>
+
+                 We are committed to enhancing urban mobility by integrating digital payments,
+                 
+                automated scheduling, and AI-driven analytics to improve overall transport efficiency.
+                <br>
+                 Our goal is to create a safer, more reliable, and eco-friendly transport ecosystem that benefits commuters, businesses, and transport providers alike.
+                 <br>
+
+                 With innovation at our core, we strive to bridge the gap between traditional transport systems and modern technology, <br>
+                 making mobility smarter, faster, and more accessible for everyone.</p>
+        </section>
+
+        <section class="routes">
+            <h2>Popular Routes</h2>
+            <ul class="route-list">
+                <li>
+                    <img src="freepik__modern-web-banner-nairobi-to-kisumu-bus-route-vibr__43513.jpeg" alt="Nairobi to Mombasa">
+                    <span>Nairobi to Mombasa</span>
+                </li>
+                <li>
+                    <img src="freepik__the-style-is-candid-image-photography-with-natural__7047.jpeg" alt="Kisumu to Nakuru">
+                    <span>Kisumu to Nakuru</span>
+                </li>
+                <li>
+                    <img src="kisumu.avif" alt="Eldoret to Nairobi">
+                    <span>Eldoret to Nairobi</span>
+                </li>
+                <li>
+                    <img src="ushago.jpeg" alt="Nairobi- Nyeri">
+                    <span>Nairobi- Nyeri</span>
+                </li>
+                
+            </ul>
+        </section>
+        
+        <section class="mission-vision-contacts">
+            <div class="card">
+                <h2>Mission Statement</h2>
+                <p>To provide a seamless, technology-enabled transport 
+                    management system that enhances efficiency, accountability, 
+                    and convenience for commuters and operators.</p>
+            </div>
+            <div class="card">
+                <h2>Vision Statement</h2>
+                <p>To revolutionize the transport sector through digital innovation,
+                     making mobility smarter and more efficient.</p>
+            </div>
+            <div class="card">
+                <h2>Contact Us</h2>
+                <p>Email:Velocity.info@gmail.com</p>          </div>
+        </section>
+
+      
+    </main>
+    <footer>
+        <p>&copy; 2025 Transport Management System</p>
+    </footer>
+</body>
+</html>

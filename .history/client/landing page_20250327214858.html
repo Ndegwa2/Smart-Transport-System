@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: orange;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+}
+
+.sign-in-out button {
+    background-color: orange;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-out button:hover {
+    background-color: #d97706;
+}
+
+.account-icon img {
+    height: 30px;
+    border-radius: 50%;
+}
+
+main {
+    padding: 50px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    color: orange;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.mission-vision-contacts {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card {
+    width: 30%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slideshow {
+    margin-top: 30px;
+}
+
+.slideshow-container {
+    display: flex;
+    overflow: hidden;
+}
+
+.slide {
+    width: 100%;
+    flex-shrink: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+    </style>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Sacco Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Routes</a></li>
+                <li><a href="#">Fleet</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Bookings</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <div class="sign-in-out">
+                <button>Sign In</button>
+                <button>Sign Out</button>
+            </div>
+            <div class="account-icon">
+                <img src="account.png" alt="Account">
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to our Transport Management System</h1>
+            <p>Your trusted partner for efficient and reliable transportation solutions.</p>
+        </section>
+
+        <section class="mission-vision-contacts">
+            <div class="card">
+                <h2>Mission Statement</h2>
+                <p>To provide a seamless, technology-enabled transport 
+                    management system that enhances efficiency, accountability, 
+                    and convenience for commuters and operators.</p>
+            </div>
+            <div class="card">
+                <h2>Vision Statement</h2>
+                <p>To revolutionize the transport sector through digital innovation,
+                     making mobility smarter and more efficient.</p>
+            </div>
+            <div class="card">
+                <h2>Contact Us</h2>
+                <p>Email:Velocity.info@gmail.com</p>          </div>
+        </section>
+
+        <section class="slideshow">
+            <h2>Personnel, Fleet and Routes</h2>
+            <div class="slideshow-container">
+                <div class="slide">
+                    <img src="/home/ndegwa/Downloads/pikaso-creations-2025-03-27_18_45/freepik__the-style-is-candid-i
+                    mage-photography-with-natural__7048.png" alt="Cashless Payment">
+                </div>
+                <div class="slide">
+                    <img src="/home/ndegwa/Downloads/freepik__the-style-is-candid-image-photography-with-natural__7046.jp
+                    eg" alt="Fleet">
+                </div>
+                <div class="slide">
+                    <img src="/home/ndegwa/Downloads/freepik__t
+                he-style-is-candid-image-photography-with-natural__7046.jpeg" alt="Routes">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Transport Management System</p>
+    </footer>
+</body>
+</html>
