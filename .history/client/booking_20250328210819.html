@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+</head>
+<body>
+    <header>
+            <h1>Booking Page</h1>
+            <a href="../client/landing page.html">Home</a>
+            <a href="../routes.html">Routes</a>
+        </header>
+    <main>
+        <section id="availability">
+            <h2>Availability</h2>
+            <div class="card">
+                <h3>Buses Available:</h3>
+                <p id="buses-available">10</p>
+            </div>
+            <div class="card">
+                <h3>Seats Available:</h3>
+                <p id="seats-available">200</p>
+            </div>
+        </section>
+        <section id="route-selection">
+            <h2>Select Route</h2>
+            <form id="route-form">
+                <label for="route">Route:</label>
+                <select id="route" name="route">
+                    <option value="Nairobi-Kisumu">Nairobi - Kisumu</option>
+                    <option value="Nairobi-Mombasa">Nairobi - Mombasa</option>
+                    <option value="Kisumu-Mombasa">Kisumu - Mombasa</option>
+                </select>
+                <button type="submit">Get Traffic Update</button>
+            </form>
+            <div id="traffic-update">
+                <p>Traffic: Good</p>
+                <p>ETA: 6 hours</p>
+            </div>
+        </section>
+        <section id="booking-info">
+            <h2>Booking Information</h2>
+            <div class="card">
+                <h3>Fare:</h3>
+                <p id="fare">Ksh 1500</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Transport System</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

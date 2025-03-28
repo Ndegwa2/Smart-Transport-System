@@ -1,0 +1,13 @@
+body {
+  font-family: sans-serif;
+  margin: 20px;
+ }
+
+ #routes {
+  margin-bottom: 20px;
+ }
+
+ #analytics {
+  border: 1px solid #ccc;
+  padding: 10px;
+ }
