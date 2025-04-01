@@ -1,6 +1,4 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+dd aconst express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors'); // Import CORS
 const app = express();
@@ -54,40 +52,21 @@ app.post('/submit-route', (req, res) => {
     );
 });
 
-app.post('/login', async (req, res) => {
+app.post('/login', (req, res) => {
     const { email, password } = req.body;
- 
-    try {
-        // Retrieve user from the database
-        const row = await new Promise((resolve, reject) => {
-            db.get(`SELECT * FROM users WHERE email = ?`, [email], (err, row) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(row);
-                }
-            });
-        });
- 
-        if (!row) {
-            return res.status(401).json({ success: false, message: 'Invalid credentials' });
+
+    db.get(`SELECT * FROM users WHERE email = ? AND password = ?`, [email, password], (err, row) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).json({ success: false, message: 'Internal server error' });
         }
- 
-        // Compare the entered password with the hashed password
-        const isPasswordValid = await bcrypt.compare(password, row.password);
- 
-        if (!isPasswordValid) {
-            return res.status(401).json({ success: false, message: 'Invalid credentials' });
+
+        if (row) {
+            res.json({ success: true, message: 'Sign in successful!' });
+        } else {
+            res.status(401).json({ success: false, message: 'Please enroll' });
         }
- 
-        // Generate JWT token
-        const token = jwt.sign({ userId: row.id }, 'secret_key', { expiresIn: '1h' });
- 
-        res.json({ success: true, message: 'Sign in successful!', token: token });
-    } catch (err) {
-        console.error(err.message);
-        return res.status(500).json({ success: false, message: 'Internal server error' });
-    }
+    });
 });
 
 app.listen(port, () => {
@@ -110,25 +89,6 @@ app.post('/register', async (req, res) => {
                     resolve(row);
                 }
             });
-             
-             // Middleware to verify JWT token
-             const authenticateToken = (req, res, next) => {
-                 const authHeader = req.headers['authorization'];
-                 const token = authHeader && authHeader.split(' ')[1];
-             
-                 if (token == null) {
-                     return res.sendStatus(401);
-                 }
-             
-                 jwt.verify(token, 'secret_key', (err, user) => {
-                     if (err) {
-                         return res.sendStatus(403);
-                     }
-             
-                     req.user = user;
-                     next();
-                 });
-             };
         });
 
         if (row) {
@@ -137,7 +97,7 @@ app.post('/register', async (req, res) => {
 
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
-
+git add
         // Insert new user
         await new Promise((resolve, reject) => {
             db.run(`INSERT INTO users (name, email, password) VALUES (?, ?, ?)`, [name, email, hashedPassword], function(err) {
