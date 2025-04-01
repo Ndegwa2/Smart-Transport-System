@@ -205,20 +205,44 @@ footer {
         </div>
         <nav>
             <ul>
-                <li><a href="#">Routes</a></li>
                 <li><a href="#">Fleet</a></li>
                 <li><a href="#">Home</a></li>
-                <li><a href="../booking.html">Bookings</a></li>
+                <li><a href="client/booking.html">Bookings</a></li>
                 <li><a href="../routes.html">Routes</a></li>
             </ul>
         </nav>
         <div class="account">
             <div class="sign-in-out">
-                <button>Sign In</button>
-                <button>Enroll</button>
+                <button id="sign-in-button">Sign In</button>
+                <button id="enroll-button">Enroll</button>
             </div>
             <div class="account-icon">
                 <img src="user-front-side-with-white-background.jpg" alt="Account">
+            </div>
+
+            <div id="login-form" style="display:none;">
+                <h2>Login Form</h2>
+                <label for="login-email">Email:</label><br>
+                <input type="email" id="login-email" name="login-email"><br><br>
+
+                <label for="login-password">Password:</label><br>
+                <input type="password" id="login-password" name="login-password"><br><br>
+
+                <button id="login-button">Login</button>
+            </div>
+
+            <div id="registration-form" style="display:none;">
+                <h2>Registration Form</h2>
+                <label for="reg-name">Name:</label><br>
+                <input type="text" id="reg-name" name="reg-name"><br><br>
+
+                <label for="reg-email">Email:</label><br>
+                <input type="email" id="reg-email" name="reg-email"><br><br>
+
+                <label for="reg-password">Password:</label><br>
+                <input type="password" id="reg-password" name="reg-password"><br><br>
+
+                <button id="register-button">Register</button>
             </div>
         </div>
     </header>
@@ -315,4 +339,80 @@ footer {
         <p>&copy; 2025 Transport Management System</p>
     </footer>
 </body>
+<script>
+    const signInButton = document.getElementById('sign-in-button');
+    const enrollButton = document.getElementById('enroll-button');
+    const registrationForm = document.getElementById('registration-form');
+    const loginForm = document.getElementById('login-form');
+
+    enrollButton.addEventListener('click', function() {
+        registrationForm.style.display = 'block';
+        loginForm.style.display = 'none';
+    });
+
+    signInButton.addEventListener('click', function() {
+        loginForm.style.display = 'block';
+        registrationForm.style.display = 'none';
+    });
+
+    const loginButton = document.getElementById('login-button');
+    loginButton.addEventListener('click', function() {
+        console.log('Login button clicked - inside event listener');
+        console.log('Login button clicked');
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email, password: password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Sign in successful!');
+            } else {
+                if (data.message === 'Please enroll') {
+                    alert('Please enroll');
+                } else {
+                    alert('Sign in failed: ' + data.message);
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred during sign in.');
+        });
+    });
+
+    const registerButton = document.getElementById('register-button');
+    registerButton.addEventListener('click', function() {
+        console.log('Register button clicked');
+        const name = document.getElementById('reg-name').value;
+        const email = document.getElementById('reg-email').value;
+        const password = document.getElementById('reg-password').value;
+
+        fetch('http://localhost:3000/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: name, email: email, password: password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Registration successful!');
+            } else {
+                alert('Registration failed: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred during registration.');
+        });
+    });
+</script>
 </html>

@@ -1,0 +1,112 @@
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  background-color: orange;
+  color: white;
+ }
+
+ #routes {
+  margin-bottom: 20px;
+ }
+
+ #analytics {
+  border: 1px solid #ccc;
+  padding: 10px;
+ }
+ 
+ #booking-form {
+     width: 50%;
+     margin: 20px auto;
+     padding: 20px;
+     border: 1px solid #ddd;
+     border-radius: 5px;
+ }
+ 
+ #booking-form label {
+     display: block;
+     margin-bottom: 5px;
+     font-weight: bold;
+ }
+ 
+ #booking-form input[type="text"],
+ #booking-form input[type="email"],
+ #booking-form select {
+     width: 100%;
+     padding: 8px;
+     margin-bottom: 15px;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     box-sizing: border-box;
+ }
+ 
+ #booking-form input[type="submit"] {
+     background-color: #4CAF50;
+     color: white;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+ }
+ 
+ #booking-form input[type="submit"]:hover {
+     background-color: #45a049;
+ }
+ 
+ .route-form-container {
+     display: flex;
+     align-items: flex-start;
+ }
+ 
+ .route-form-container #booking-form {
+     width: 50%;
+ }
+ 
+ .route-form-container img {
+     width: auto;
+     height: 300px;
+     max-width: 40%;
+     margin-left: 20px;
+     border-radius: 10px;
+     object-fit: cover; /* Ensure the image fills the container without distortion */
+ }
+ 
+ header nav ul {
+     justify-content: center;
+ }
+ 
+ header, nav, main, footer {
+     background-color: white;
+     color: orange;
+ }
+ 
+ nav a {
+     color: orange;
+ }
+ 
+ nav a:hover {
+     color: darkorange;
+ }
+ 
+ footer {
+     color: black;
+ }
+ 
+ #booking-form input[type="submit"] {
+     background-color: orange;
+     color: white;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+ }
+ 
+ #booking-form input[type="submit"]:hover {
+     background-color: darkorange;
+ }
+ 
+ #booking-form input[type="text"]:focus,
+ #booking-form input[type="email"]:focus,
+ #booking-form select:focus {
+     border-color: darkorange;
+     box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+ }
