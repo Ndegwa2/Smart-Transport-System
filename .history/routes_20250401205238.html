@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="routes-page">
+<body>
     <header>
             <div class="logo">
                 <img src="client/10550142.jpg" alt="Sacco Logo">
@@ -55,21 +55,20 @@
                 </div>
             </div>
         </header>
-    <div class="container">
-        <aside class="sidebar">
-            <h3>Quick Navigation</h3>
-            <ul>
-                <li><a href="#booking-form">Booking Form</a></li>
-                <li><a href="#route-container">Available Routes</a></li>
-                <li><a href="#info-container">Information</a></li>
-                <li><a href="client/landing page.html">Home</a></li>
-            </ul>
-        </aside>
-        <main>
-            <h1>Available Routes</h1>
-            <div class="route-form-container">
-                <form id="booking-form" action="/submit-route" method="post">
-                    <h2>Booking Details</h2>
+    <main>
+        <h1>Available Routes</h1>
+                <div style="display: flex;">
+                        <aside style="width: 20%; padding: 20px; background-color: #f0f0f0;">
+                            <h3>Quick Navigation</h3>
+                            <ul>
+                                <li><a href="#booking-form">Booking Form</a></li>
+                                <li><a href="#route-container">Available Routes</a></li>
+                                <li><a href="#info-container">Information</a></li>
+                            </ul>
+                        </aside>
+                        <div class="route-form-container" style="width: 80%;">
+                                                    <form id="booking-form" action="/submit-route" method="post">
+                                                        <h2>Booking Details</h2>
                                                         <label for="name">Name:</label><br>
                                                         <input type="text" id="name" name="name"><br><br>
                 
@@ -93,12 +92,7 @@
                 
                                     <input type="submit" value="Submit">
                                                     </form>
-                                                <div class="image-card">
                                                     <img src="client/routes.avif" alt="Routes Image">
-                                                </div>
-                                                <div class="photo-grid">
-                                                    <img src="client/routes.avif" alt="Routes Image">
-                                                    <img src="client/ushago.jpeg" alt="Ushago Image">
                                                 </div>
                                                 <script>
                                                     document.getElementById('booking-form').addEventListener('submit', function(event) {
@@ -174,7 +168,6 @@
             </div>
         </div>
     </main>
-    </div>
     <footer>
         <p>Our mission is to connect people and businesses with safe and affordable transport options.</p>
     </footer>

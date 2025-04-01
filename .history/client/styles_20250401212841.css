@@ -267,19 +267,4 @@ footer {
     border-radius: 5px;
     margin-bottom: 10px;
 }
-
-.info-card {
-    float: left;
-    width: 45%;
-    margin-right: 2%;
-    border: 2px solid black;
-}
-
-.info-card h3 {
-    color: orange;
-}
-
-.info-card:last-child {
-    float: right;
-    margin-right: 0;
 }

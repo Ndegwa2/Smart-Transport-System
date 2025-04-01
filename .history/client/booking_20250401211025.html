@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="booking-page">
+    <header>
+        <div class="logo">
+            <img src="10550142.jpg" alt="Sacco Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Fleet</a></li>
+                <li><a href="landing page.html">Home</a></li>
+                <li><a href="booking.html">Bookings</a></li>
+                <li><a href="routes.html">Routes</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <div class="sign-in-out">
+                <button id="sign-in-button">Sign In</button>
+                <button id="enroll-button">Enroll</button>
+            </div>
+            <div class="account-icon">
+                <img src="user-front-side-with-white-background.jpg" alt="Account">
+            </div>
+
+            <div id="login-form" style="display:none;">
+                <h2>Login Form</h2>
+                <label for="login-email">Email:</label><br>
+                <input type="email" id="login-email" name="login-email"><br><br>
+
+                <label for="login-password">Password:</label><br>
+                <input type="password" id="login-password" name="login-password"><br><br>
+
+                <button id="login-button">Login</button>
+            </div>
+
+            <div id="registration-form" style="display:none;">
+                <h2>Registration Form</h2>
+                <label for="reg-name">Name:</label><br>
+                <input type="text" id="reg-name" name="reg-name"><br><br>
+
+                <label for="reg-email">Email:</label><br>
+                <input type="email" id="reg-email" name="reg-email"><br><br>
+
+                <label for="reg-password">Password:</label><br>
+                <input type="password" id="reg-password" name="reg-password"><br><br>
+
+                <button id="register-button">Register</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="availability">
+            <h2>Availability</h2>
+            <div>
+                <h3>Buses Available:</h3>
+                <p id="buses-available">10</p>
+            </div>
+            <div>
+                <h3>Seats Available:</h3>
+                <p id="seats-available">200</p>
+            </div>
+        </section>
+        <section id="route-selection">
+            <h2>Select Route</h2>
+            <form id="route-form">
+                <div>
+                    <label for="route">Route:</label>
+                    <select id="route" name="route">
+                        <option value="Nairobi-Kisumu">Nairobi - Kisumu</option>
+                        <option value="Nairobi-Mombasa">Nairobi - Mombasa</option>
+                        <option value="Kisumu-Mombasa">Kisumu - Mombasa</option>
+                    </select>
+                </div>
+                <button type="submit">Get Traffic Update</button>
+            </form>
+            <div id="traffic-update">
+                <p>Traffic: Good</p>
+                <p>ETA: 6 hours</p>
+            </div>
+        </section>
+        <section id="booking-info">
+            <h2>Booking Information</h2>
+            <div>
+                <h3>Fare:</h3>
+                <p id="fare">Ksh 1500</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Transport System</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

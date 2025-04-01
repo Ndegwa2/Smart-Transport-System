@@ -275,10 +275,6 @@ footer {
     border: 2px solid black;
 }
 
-.info-card h3 {
-    color: orange;
-}
-
 .info-card:last-child {
     float: right;
     margin-right: 0;
