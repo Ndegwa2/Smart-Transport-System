@@ -1,0 +1,151 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="routes-page">
+    <header>
+            <div class="logo">
+                <img src="client/10550142.jpg" alt="Sacco Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Fleet</a></li>
+                    <li><a href="client/landing page.html">Home</a></li>
+                    <li><a href="client/booking.html">Bookings</a></li>
+                    
+                </ul>
+            </nav>
+            
+                <div class="account-icon">
+                    <img src="client/user-front-side-with-white-background.jpg" alt="Account">
+                </div>
+</div>
+            </div>
+        </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Quick Navigation</h3>
+            <ul>
+                <li><a href="#booking-form">Booking Form</a></li>
+                <li><a href="#route-container">Available Routes</a></li>
+                <li><a href="#info-container">Information</a></li>
+                <li><a href="client/landing page.html">Home</a></li>
+            </ul>
+        </aside>
+        <main>
+            <h1>Available Routes</h1>
+            <div class="route-form-container">
+                <form id="booking-form" action="/submit-route" method="post">
+                    <h2>Booking Details</h2>
+                                                        <label for="name">Name:</label><br>
+                                                        <input type="text" id="name" name="name"><br><br>
+                
+                                    <label for="destination">Destination:</label><br>
+                                    <input type="text" id="destination" name="destination"><br><br>
+                
+                                    <label for="pickup">Pickup Location:</label><br>
+                                    <input type="text" id="pickup" name="pickup"><br><br>
+                
+                                    <label for="route">Route:</label><br>
+                                    <input type="text" id="route" name="route"><br><br>
+                
+                                    <label for="email">Email:</label><br>
+                                    <input type="email" id="email" name="email"><br><br>
+                
+                                    <label for="payment">Payment Method:</label><br>
+                                    <select id="payment" name="payment">
+                                        <option value="card">Card</option>
+                                        <option value="mpesa">M-Pesa</option>
+                                    </select><br><br>
+                
+                                    <input type="submit" value="Submit">
+                                                    </form>
+                                                    <img src="client/routes.avif" alt="Routes Image">
+                                                </div>
+                                               
+                                                <script>
+                                                    document.getElementById('booking-form').addEventListener('submit', function(event) {
+                                                        event.preventDefault(); // Prevent the default form submission
+                                    
+                                                        const formData = new FormData(this);
+                                                        const data = {};
+                                                        formData.forEach((value, key) => {
+                                                            data[key] = value;
+                                                        });
+                                    
+                                                        fetch('/submit-route', {
+                                                            method: 'POST',
+                                                            headers: {
+                                                                'Content-Type': 'application/json',
+                                                            },
+                                                            body: JSON.stringify(data),
+                                                        })
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            if (data.success) {
+                                                                alert(data.message);
+                                                            } else {
+                                                                alert('Error: ' + data.message);
+                                                            }
+                                                        })
+                                                        .catch(error => {
+                                                            console.error('Error:', error);
+                                                            alert('An error occurred while submitting the form.');
+                                                        });
+                                                    });
+                                                </script>
+        <div class="route-container">
+            <div class="route-card">
+                <h3>RT105</h3>
+                <p>Fleet: 15 buses</p>
+                <p>Available Seats: 450</p>
+            </div>
+            <div class="route-card">
+                <h3>RT66</h3>
+                <p>Fleet: 10 buses</p>
+                <p>Available Seats: 300</p>
+            </div>
+            <div class="route-card">
+                <h3>RT78</h3>
+                <p>Fleet: 8 buses</p>
+                <p>Available Seats: 240</p>
+            </div>
+            <div class="route-card">
+                <h3>RT008</h3>
+                <p>Fleet: 12 buses</p>
+                <p>Available Seats: 360</p>
+            </div>
+            <div class="route-card">
+                <h3>RT54</h3>
+                <p>Fleet: 20 buses</p>
+                <p>Available Seats: 600</p>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="info-card">
+                <h3>Traffic Update</h3>
+                <p><i class="fas fa-traffic-light"></i> Traffic: Moderate</p>
+            </div>
+            <div class="info-card">
+                <h3>Weather</h3>
+                <p><i class="fas fa-sun"></i> Weather: Sunny</p>
+            </div>
+            <div class="info-card">
+                <h3>Seat Capacity Analytics</h3>
+                <p><i class="fas fa-chair"></i> Average Capacity: 75%</p>
+            </div>
+        </div>
+    </main>
+    </div>
+    <footer>
+        <p>Our mission is to connect people and businesses with safe and affordable transport options.</p>
+    </footer>
+    <script src="client/auth.js"></script>
+</body>
+</html>

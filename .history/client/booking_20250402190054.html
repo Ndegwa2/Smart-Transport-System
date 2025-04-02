@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <style>
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: orange;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+}
+
+.sign-in-out button {
+    background-color: orange;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-out button:hover {
+    background-color: #d97706;
+}
+
+.account-icon img {
+    height: 30px;
+    border-radius: 50%;
+}
+
+main {
+    padding: 50px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    color: orange;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.mission-vision-contacts {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card {
+    width: 30%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slideshow {
+    margin-top: 15px;
+}
+
+.slideshow-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.slide {
+    width: 30%;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-us {
+    margin-top: 15px;
+    text-align: justify;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.routes {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.routes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.routes li {
+    margin-bottom: 10px;
+}
+
+.route-list {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+.route-list li {
+    text-align: center;
+}
+
+.route-list img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.route-list img:hover {
+    transform: scale(1.1);
+}
+
+.route-list span {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Styles for routes.html */
+.route-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.route-card {
+    width: 200px;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.route-card h3 {
+    color: orange;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.info-card {
+    width: 30%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.info-card h3 {
+    color: orange;
+}
+
+.route-card img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.info-card img {
+    width: 100%;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.info-card {
+    float: left;
+    width: 45%;
+    margin-right: 2%;
+    border: 2px solid black;
+}
+
+.info-card h3 {
+    color: orange;
+}
+
+.info-card:last-child {
+    float: right;
+    margin-right: 0;
+}
+
+/* Booking page specific styles */
+.booking-page main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.booking-page section {
+    margin-bottom: 20px;
+    width: 80%;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#availability {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#availability div {
+    text-align: center;
+}
+
+#route-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#route-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#route-form div {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#route-form label {
+    text-align: left;
+    width: 40%;
+}
+
+#route-form select {
+    width: 55%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#route-form button {
+    background-color: orange;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#route-form button:hover {
+    background-color: #d97706;
+}
+
+#traffic-update {
+    margin-top: 10px;
+    text-align: left;
+}
+
+#booking-info {
+    text-align: center;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="booking-page">
+    <header>
+        <div class="logo">
+            <img src="10550142.jpg" alt="Sacco Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Fleet</a></li>
+                <li><a href="landing page.html">Home</a></li>
+                <li><a href="booking.html">Bookings</a></li>
+                <li><a href="routes.html">Routes</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <div class="account-icon">
+                <img src="user-front-side-with-white-background.jpg" alt="Account">
+            </div>
+
+            <div id="login-form" style="display:none;">
+                <h2>Login Form</h2>
+                <label for="login-email">Email:</label><br>
+                <input type="email" id="login-email" name="login-email"><br><br>
+
+                <label for="login-password">Password:</label><br>
+                <input type="password" id="login-password" name="login-password"><br><br>
+
+                <button id="login-button">Login</button>
+            </div>
+
+            <div id="registration-form" style="display:none;">
+                <h2>Registration Form</h2>
+                <label for="reg-name">Name:</label><br>
+                <input type="text" id="reg-name" name="reg-name"><br><br>
+
+                <label for="reg-email">Email:</label><br>
+                <input type="email" id="reg-email" name="reg-email"><br><br>
+
+                <label for="reg-password">Password:</label><br>
+                <input type="password" id="reg-password" name="reg-password"><br><br>
+
+                <button id="register-button">Register</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="availability">
+            <h2>Availability</h2>
+            <div>
+                <h3>Buses Available:</h3>
+                <p id="buses-available">10</p>
+            </div>
+            <div>
+                <h3>Seats Available:</h3>
+                <p id="seats-available">200</p>
+            </div>
+        </section>
+        <section id="route-selection">
+            <h2>Select Route</h2>
+            <form id="route-form">
+                <div>
+                    <label for="route">Route:</label>
+                    <select id="route" name="route">
+                        <option value="Nairobi-Kisumu">Nairobi - Kisumu</option>
+                        <option value="Nairobi-Mombasa">Nairobi - Mombasa</option>
+                        <option value="Kisumu-Mombasa">Kisumu - Mombasa</option>
+                    </select>
+                </div>
+                <button type="submit">Get Traffic Update</button>
+            </form>
+            <div id="traffic-update">
+                    <p><i class="fas fa-traffic-light"></i> Traffic: Good</p>
+                <p><i class="far fa-clock"></i> ETA: 6 hours</p>
+            </div>
+        </section>
+        <section id="booking-info">
+            <h2>Booking Information</h2>
+            <div>
+                <h3>Fare:</h3>
+                <p id="fare">Ksh 1500</p>
+            </div>
+        </section>
+        <section id="booking-form">
+            <h2>Book Your Trip</h2>
+            <form id="booking-form">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div>
+                    <label for="seats">Number of Seats:</label>
+                    <input type="number" id="seats" name="seats" min="1" value="1" required>
+                </div>
+                <button type="submit">Book Now</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Transport System</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

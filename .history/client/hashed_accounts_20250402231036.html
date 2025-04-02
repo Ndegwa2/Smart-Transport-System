@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accounts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Hashed Accounts</h1>
+
+    <section id="hashed-accounts">
+        <!-- Hashed accounts data will be displayed here -->
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/admin/hashed_accounts', {
+                headers: {
+                    'Authorization': 'GX!Caat6BP#AUs7' // JWT token
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const section = document.getElementById('hashed-accounts');
+                    const dataList = document.createElement('ul');
+
+                    if (Array.isArray(data.data)) {
+                        data.data.forEach(item => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = JSON.stringify(item); // Display item as JSON string
+                            dataList.appendChild(listItem);
+                        });
+                    } else {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = JSON.stringify(data.data); // Display item as JSON string
+                        dataList.appendChild(listItem);
+                    }
+
+                    section.appendChild(dataList);
+                } else {
+                    console.error('Error fetching data:', data.message);
+                    const section = document.getElementById('hashed-accounts');
+                     section.textContent = 'Error fetching data: ' + data.message;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const section = document.getElementById('hashed-accounts');
+                section.textContent = 'An error occurred while fetching data.';
+            });
+        });
+    </script>
+</body>
+</html>
