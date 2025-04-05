@@ -91,12 +91,14 @@ app.post('/login', async (req, res) => {
     try {
         // Retrieve user from the database
         const row = await new Promise((resolve, reject) => {
-            db.get(`SELECT * FROM users WHERE email = ?`, [email], (err, row) => {
+            const stmt = db.prepare(`SELECT * FROM users WHERE email = ?`);
+            stmt.get([email], (err, row) => {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(row);
                 }
+                stmt.finalize();
             });
         });
  
@@ -112,7 +114,7 @@ app.post('/login', async (req, res) => {
         }
  
         // Generate JWT token
-        const token = jwt.sign({ userId: row.id }, 'secret_key', { expiresIn: '1h' });
+        const token = jwt.sign({ userId: row.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
  
         res.json({ success: true, message: 'Sign in successful!', token: token, name: row.name, category: row.category });
     } catch (err) {
@@ -131,12 +133,14 @@ app.post('/register', async (req, res) => {
     try {
         // Check if user already exists
         const row = await new Promise((resolve, reject) => {
-            db.get(`SELECT * FROM users WHERE email = ?`, [email], (err, row) => {
+            const stmt = db.prepare(`SELECT * FROM users WHERE email = ?`);
+            stmt.get([email], (err, row) => {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(row);
                 }
+                stmt.finalize();
             });
         });
 
