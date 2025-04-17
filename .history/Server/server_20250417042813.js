@@ -190,13 +190,8 @@ const authenticateToken = (req, res, next) => {
     if (token == null) {
         return res.sendStatus(401);
     }
-    const jwtSecret = process.env.JWT_SECRET;
-    if (!jwtSecret) {
-        console.error('JWT_SECRET environment variable not set!');
-        return res.status(500).json({ success: false, message: 'JWT_SECRET not set' });
-    }
 
-    jwt.verify(token, jwtSecret, (err, user) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) {
             return res.sendStatus(403);
         }
