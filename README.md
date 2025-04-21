@@ -6,13 +6,13 @@ This is a transport management system built with Node.js, Express, and SQLite.
 
 1.  Install Node.js and npm.
 2.  Clone the repository: `git clone <repository_url>`
-3.  Navigate to the project directory: `cd <project_directory>`
+3.  Navigate to the project directory: `cd web-app-project`
 4.  Install dependencies: `npm install`
 
 ## Usage
 
-1.  Run the backend server: `node server.js`
-2.  Open `client/landing page.html` in your browser.
+1.  Run the backend server: `node Server/server.js`
+2.  Open `client/index.html` in your browser.
 
 ## Database Setup
 
@@ -32,15 +32,18 @@ The application uses SQLite for data storage. The database files are:
 
 ## Authentication
 
-The application uses JWT for authentication.(my token expires after 1hr)
+The application uses JWT for authentication. (my token expires after 1hr)
+
+## Dependencies
+
+*   bcrypt
+*   cors
+*   dotenv
+*   express
+*   jsonwebtoken
+*   pdfmake
+*   sqlite3
 
 ## Contributing
 
 Feel free to contribute to this project by submitting pull requests.
-
-## For the Lecturer.
-I decided to use technologies that am best familiar with since I had taken a whole year off school on a bootcamp.
-I will be happy to explain any matters that may arise
-Regards,
-147640,
-Samuel Ndegwa.

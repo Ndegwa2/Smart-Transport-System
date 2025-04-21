@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Routes Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Available Routes</h1>
+
+:start_line:11
+-------
+    <nav>
+    </nav>
+
+:start_line:16
+-------
+    <script>
+        // Check if the user is logged in
+        if (localStorage.getItem('token') === null) {
+            // Redirect to the login page if not logged in
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

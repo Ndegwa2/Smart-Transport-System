@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to Our Website</h1>
+
+:start_line:11
+-------
+    <nav>
+    </nav>
+
+:start_line:16
+-------
+    <button id="sign-up-button">Sign Up</button>
+    <button id="sign-in-button">Sign In</button>
+    <div class="account-icon"></div>
+
+    <script>
+        document.getElementById('sign-up-button').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });
+
+        document.getElementById('sign-in-button').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+<script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    
+    const res = await fetch('/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+    });
+    
+    const data = await res.json();
+    
+    if (data.success) {
+    localStorage.setItem('token', data.token); // Store token if needed
+    const role = data.category;
+    
+    // Redirect to respective dashboard
+    if (role === 'administrator') {
+    window.location.href = '/admin/dashboard.html';
+    } else if (role === 'accountant') {
+    window.location.href = '/accountant/dashboard.html';
+    } else if (role === 'fleet_manager') {
+    window.location.href = '/fleet/dashboard.html';
+    } else if (role === 'booking_manager') {
+    window.location.href = '/booking/dashboard.html';
+    } else {
+    window.location.href = '/client/booking.html';
+    }
+    } else {
+    alert(data.message || 'Login failed');
+    }
+    });
+    </script>
+</html>

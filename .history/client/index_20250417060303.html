@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to Our Website</h1>
+
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="routes.html">Routes</a> |
+        <a href="booking.html">Bookings</a> |
+        <a href="hashed_accounts.html">Hashed Accounts</a> |
+        <a href="admin.html">Admin</a>
+    </nav>
+
+    <script>
+        // Check if the user is logged in
+        if (localStorage.getItem('token') === null) {
+            // Redirect to the login page if not logged in
+            window.location.href = 'auth.html';
+        }
+    </script>
+</body>
+</html>

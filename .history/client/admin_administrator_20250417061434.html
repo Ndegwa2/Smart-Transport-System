@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Administrator Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Administrator Dashboard</h1>
+
+    <section id="employees">
+        <h2>Employees</h2>
+        <!-- Employee data will be displayed here -->
+    </section>
+
+    <section id="accounts">
+        <h2>Accounts</h2>
+        <!-- Account data will be displayed here -->
+    </section>
+
+    <section id="bookings">
+        <h2>Bookings</h2>
+        <!-- Booking data will be displayed here -->
+    </section>
+
+    <section id="fleet">
+        <h2>Fleet</h2>
+        <!-- Fleet data will be displayed here -->
+    </section>
+
+    <section id="reports">
+        <h2>Reports</h2>
+        <button id="download-report">Download Monthly Report</button>
+    </section>
+
+    <section id="hashed_accounts_link">
+        <h2><a href="hashed_accounts.html">Hashed Accounts</a></h2>
+    </section>
+
+:start_line:40
+-------
+    <script>
+        // Check if the user is logged in
+        if (localStorage.getItem('token') === null) {
+            // Redirect to the login page if not logged in
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

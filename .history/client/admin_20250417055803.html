@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+
+    <script>
+        // Redirect based on category
+        function redirectToCategory(category) {
+            switch (category) {
+                case 'administrator':
+                    window.location.href = 'admin_administrator.html';
+                    break;
+                case 'booking_manager':
+                    window.location.href = 'admin_booking_manager.html';
+                    break;
+                case 'fleet_manager':
+                    window.location.href = 'admin_fleet_manager.html';
+                    break;
+                case 'accountant':
+                    window.location.href = 'admin_accountant.html';
+                    break;
+                default:
+                    window.location.href = 'routes.html';
+                    break;
+            }
+        }
+
+        // Get the category from local storage or a cookie
+        const category = localStorage.getItem('category'); // Replace with your actual method of storing the category
+
+        // Redirect if the category is valid
+        if (category) {
+            redirectToCategory(category);
+        } else {
+            // Handle the case where the category is not found
+            alert('Category not found. Redirecting to routes page.');
+            window.location.href = 'routes.html';
+        }
+    </script>
+</body>
+</html>

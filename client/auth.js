@@ -23,18 +23,21 @@ function updateUI(userName = null) {
 // Function to redirect user based on category
 function redirectToCategory(category) {
     switch (category) {
-        case 'admin':
-            window.location.href = 'admin.html';
+        case 'administrator':
+            window.location.href = 'admin_administrator.html';
             break;
-        case 'accounts':
-            window.location.href = 'accounts.html';
+        case 'booking_manager':
+            window.location.href = 'admin_booking_manager.html';
             break;
-        case 'employee':
-            window.location.href = 'employee.html';
+        case 'fleet_manager':
+            window.location.href = 'admin_fleet_manager.html';
+            break;
+        case 'accountant':
+            window.location.href = 'admin_accountant.html';
             break;
         case 'passenger':
         default:
-            window.location.href = 'routes.html';
+            window.location.href = 'index.html';
             break;
     }
 }
@@ -42,19 +45,19 @@ function redirectToCategory(category) {
 // Initial UI update
 updateUI();
 
+// Event listeners for showing/hiding forms
 enrollButton.addEventListener('click', function() {
-    registrationForm.style.display = 'block';
-    loginForm.style.display = 'none';
+    document.getElementById('registration-form').style.display = 'block';
+    document.getElementById('login-form').style.display = 'none';
 });
 
 signInButton.addEventListener('click', function() {
-    loginForm.style.display = 'block';
-    registrationForm.style.display = 'none';
+    document.getElementById('login-form').style.display = 'block';
+    document.getElementById('registration-form').style.display = 'none';
 });
 
-const loginButton = document.getElementById('login-button');
-loginButton.addEventListener('click', function() {
-    console.log('Login button clicked - inside event listener');
+// Login event listener
+document.getElementById('login-button').addEventListener('click', function() {
     console.log('Login button clicked');
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
@@ -70,6 +73,8 @@ loginButton.addEventListener('click', function() {
     .then(data => {
         if (data.success) {
             isLoggedIn = true;
+            localStorage.setItem('token', data.token); // Store the token
+            localStorage.setItem('category', data.category); // Store the category
             updateUI(data.name);
             alert('Sign in successful!');
             redirectToCategory(data.category); // Redirect based on category
@@ -85,8 +90,8 @@ loginButton.addEventListener('click', function() {
     });
 });
 
-const registerButton = document.getElementById('register-button');
-registerButton.addEventListener('click', function() {
+// Registration event listener
+document.getElementById('register-button').addEventListener('click', function() {
     console.log('Register button clicked');
     const name = document.getElementById('reg-name').value;
     const email = document.getElementById('reg-email').value;

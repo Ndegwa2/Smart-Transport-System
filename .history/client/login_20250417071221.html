@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            color: #ff8c00; /* Orange */
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #ff8c00; /* Orange */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e07a00;
+        }
+        a {
+            color: #ff8c00; /* Orange */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="email" id="login-email" placeholder="Email" required><br>
+            <input type="password" id="login-password" placeholder="Password" required><br>
+            <button type="submit">Sign In</button>
+        </form>
+:start_line:62
+-------
+        <a href="forgot_password.html">Forgotten Password?</a>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const res = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                localStorage.setItem('token', data.token); // Store token if needed
+                const role = data.category;
+
+                // Redirect to respective dashboard
+                if (role === 'administrator') {
+                    window.location.href = 'admin_administrator.html';
+                } else if (role === 'accountant') {
+                    window.location.href = 'admin_accountant.html';
+                } else if (role === 'fleet_manager') {
+                    window.location.href = 'admin_fleet_manager.html';
+                } else if (role === 'booking_manager') {
+                    window.location.href = 'admin_booking_manager.html';
+                } else {
+                    window.location.href = 'routes.html';
+                }
+            } else {
+                alert(data.message || 'Login failed');
+            }
+        });
+    </script>
+</body>
+</html>

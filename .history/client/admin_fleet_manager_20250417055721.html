@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fleet Manager Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Fleet Manager Dashboard</h1>
+
+    <section id="fleet">
+        <h2>Fleet</h2>
+        <!-- Fleet data will be displayed here -->
+    </section>
+
+    <section id="reports">
+        <h2>Reports</h2>
+        <button id="download-report">Download Monthly Report</button>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('download-report').addEventListener('click', () => {
+            window.location.href = '/admin/reports';
+        });
+    </script>
+</body>
+</html>

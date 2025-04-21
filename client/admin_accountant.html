@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accountant Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Accountant Dashboard</h1>
+
+    <section id="accounts">
+        <h2>Accounts</h2>
+        <!-- Account data will be displayed here -->
+    </section>
+
+    <section id="reports">
+        <h2>Reports</h2>
+        <button id="download-report">Download Monthly Report</button>
+    </section>
+
+:start_line:21
+-------
+    <script>
+        // Check if the user is logged in
+        if (localStorage.getItem('token') === null) {
+            // Redirect to the login page if not logged in
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+
+:start_line:11
+-------
+    <section id="employees">
+        <h2>Employees</h2>
+        <!-- Employee data will be displayed here -->
+    </section>
+    
+    <section id="accounts">
+        <h2>Accounts</h2>
+        <!-- Account data will be displayed here -->
+    </section>
+    
+    <section id="bookings">
+        <h2>Bookings</h2>
+        <!-- Booking data will be displayed here -->
+    </section>
+    
+:start_line:26
+-------
+    <section id="fleet">
+        <h2>Fleet</h2>
+        <!-- Fleet data will be displayed here -->
+    </section>
+    
+    <section id="hashed_accounts_link">
+        <h2><a href="hashed_accounts.html">Hashed Accounts</a></h2>
+    </section>
+
+    <script>
+        // Check if the user is logged in and is an admin
+        const token = localStorage.getItem('token');
+        const category = localStorage.getItem('category');
+
+        if (!token) {
+            // Redirect to the login page if not logged in
+            window.location.href = 'index.html';
+        } else if (category !== 'administrator') {
+            // Redirect based on category
+            function redirectToCategory(category) {
+                switch (category) {
+                    case 'booking_manager':
+                        window.location.href = 'admin_booking_manager.html';
+                        break;
+                    case 'fleet_manager':
+                        window.location.href = 'admin_fleet_manager.html';
+                        break;
+                    case 'accountant':
+                        window.location.href = 'admin_accountant.html';
+                        break;
+                    default:
+                        window.location.href = 'routes.html';
+                        break;
+                }
+            }
+            redirectToCategory(category);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

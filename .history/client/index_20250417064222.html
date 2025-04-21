@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to Our Website</h1>
+
+:start_line:11
+-------
+    <nav>
+    </nav>
+
+    <div id="login-form">
+        <h2>Sign In</h2>
+        <input type="email" id="login-email" placeholder="Email" required><br>
+        <input type="password" id="login-password" placeholder="Password" required><br>
+        <button id="login-button">Sign In</button>
+    </div>
+
+    <div id="registration-form">
+        <h2>Enroll</h2>
+        <input type="text" id="reg-name" placeholder="Name" required><br>
+        <input type="email" id="reg-email" placeholder="Email" required><br>
+        <input type="password" id="reg-password" placeholder="Password" required><br>
+        <select id="reg-category">
+            <option value="passenger">Passenger</option>
+            <option value="administrator">Administrator</option>
+            <option value="booking_manager">Booking Manager</option>
+            <option value="fleet_manager">Fleet Manager</option>
+            <option value="accountant">Accountant</option>
+        </select><br>
+        <button id="register-button">Register</button>
+    </div>
+
+  
+    <button id="sign-in-button">Sign In</button>
+    <div class="account-icon"></div>
+
+    <script src="auth.js"></script>
+</body>
+<script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    
+    const res = await fetch('/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+    });
+    
+    const data = await res.json();
+    
+    if (data.success) {
+    localStorage.setItem('token', data.token); // Store token if needed
+    const role = data.category;
+    
+    // Redirect to respective dashboard
+    if (role === 'administrator') {
+    window.location.href = '/admin/dashboard.html';
+    } else if (role === 'accountant') {
+    window.location.href = '/accountant/dashboard.html';
+    } else if (role === 'fleet_manager') {
+    window.location.href = '/fleet/dashboard.html';
+    } else if (role === 'booking_manager') {
+    window.location.href = '/booking/dashboard.html';
+    } else {
+    window.location.href = '/client/booking.html';
+    }
+    } else {
+    alert(data.message || 'Login failed');
+    }
+    });
+    </script>
+</html>

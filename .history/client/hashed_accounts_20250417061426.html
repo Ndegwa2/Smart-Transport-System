@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accounts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Hashed Accounts</h1>
+
+    <section id="hashed-accounts">
+        <!-- Hashed accounts data will be displayed here -->
+    </section>
+
+:start_line:15
+-------
+    <script>
+        // Check if the user is logged in
+        if (localStorage.getItem('token') === null) {
+            // Redirect to the login page if not logged in
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
