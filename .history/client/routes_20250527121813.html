@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Routes</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: orange;
+        }
+
+        .account {
+            display: flex;
+            align-items: center;
+        }
+
+        .sign-in-out button {
+            background-color: orange;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sign-in-out button:hover {
+            background-color: #d97706;
+        }
+
+        .account-icon img {
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        main {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: orange;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .mission-vision-contacts {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 30%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slideshow {
+            margin-top: 15px;
+        }
+
+        .slideshow-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .slide {
+            width: 30%;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-us {
+            margin-top: 15px;
+            text-align: justify;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .routes {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .routes ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .routes li {
+            margin-bottom: 10px;
+        }
+
+        .route-list {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            padding: 0;
+        }
+
+        .route-list li {
+            text-align: center;
+        }
+
+        .route-list img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .route-list img:hover {
+            transform: scale(1.1);
+        }
+
+        .route-list span {
+            display: block;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .booking-page header {
+            background-color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-page main {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .booking-page section {
+            margin-bottom: 20px;
+        }
+
+        .booking-page footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Styles for routes.html */
+        .route-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .route-card {
+            width: 200px;
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .route-card h3 {
+            color: orange;
+        }
+
+        .info-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            width: 30%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: orange;
+        }
+
+        .route-card img {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .info-card img {
+            width: 100%;
+            max-height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .info-card {
+            float: left;
+            width: 45%;
+            margin-right: 2%;
+            border: 2px solid black;
+        }
+
+        .info-card h3 {
+            color: orange;
+        }
+
+        .info-card:last-child {
+            float: right;
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="client/landing page.html">Home</a></li>
+                <li><a href="booking.html">Bookings</a></li>
+                <li><a href="routes.html">Routes</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Available Routes</h1>
+        <div class="route-container" id="routes">
+            <!-- Dynamic route cards injected here -->
+        </div>
+
+        <div class="info-container" id="info-analytics">
+            <!-- Dynamic analytics info cards injected here -->
+        </div>
+    </main>
+    <footer>
+        <p>Our mission is to connect people and businesses with safe and affordable transport options.</p>
+    </footer>
+
+    <script>
+        const routesData = [
+            {
+                route: "Nairobi - Kisumu",
+                time: "8:00 AM",
+                availableBuses: 5,
+                availableSeats: 20,
+                occupiedSeats: 30
+            },
+            {
+                route: "Nairobi - Mombasa",
+                time: "9:00 AM",
+                availableBuses: 3,
+                availableSeats: 10,
+                occupiedSeats: 40
+            },
+            {
+                route: "RT105",
+                time: "7:00 AM",
+                availableBuses: 15,
+                availableSeats: 450,
+                occupiedSeats: 50
+            },
+            {
+                route: "RT66",
+                time: "10:00 AM",
+                availableBuses: 10,
+                availableSeats: 300,
+                occupiedSeats: 25
+            },
+            {
+                route: "RT78",
+                time: "11:00 AM",
+                availableBuses: 8,
+                availableSeats: 240,
+                occupiedSeats: 10
+            },
+            {
+                route: "RT008",
+                time: "12:00 PM",
+                availableBuses: 12,
+                availableSeats: 360,
+                occupiedSeats: 40
+            },
+            {
+                route: "RT54",
+                time: "1:00 PM",
+                availableBuses: 20,
+                availableSeats: 600,
+                occupiedSeats: 90
+            }
+        ];
+
+        function displayRoutes() {
+            const routesSection = document.getElementById("routes");
+            let routesHTML = "";
+            routesData.forEach(route => {
+                routesHTML += `
+                    <div class="route-card">
+                        <h3>${route.route}</h3>
+                        <p>Departure: ${route.time}</p>
+                        <p>Available Buses: ${route.availableBuses}</p>
+                        <p>Available Seats: ${route.availableSeats}</p>
+                        <p>Occupied Seats: ${route.occupiedSeats}</p>
+                    </div>
+                `;
+            });
+            routesSection.innerHTML = routesHTML;
+        }
+
+        function displayAnalytics() {
+            const analyticsSection = document.getElementById("info-analytics");
+
+            // Example traffic and weather data - replace with real API data if available
+            const traffic = "Moderate";
+            const weather = "Sunny";
+
+            // Calculate seat capacity as a percentage
+            let totalAvailableSeats = 0;
+            let totalOccupiedSeats = 0;
+            routesData.forEach(route => {
+                totalAvailableSeats += route.availableSeats;
+                totalOccupiedSeats += route.occupiedSeats;
+            });
+            const averageCapacity = ((totalOccupiedSeats / (totalAvailableSeats + totalOccupiedSeats)) * 100).toFixed(2);
+
+            analyticsSection.innerHTML = `
+                <div class="info-card">
+                    <h3>Traffic Update</h3>
+                    <p>Traffic: ${traffic}</p>
+                </div>
+                <div class="info-card">
+                    <h3>Weather</h3>
+                    <p>Weather: ${weather}</p>
+                </div>
+                <div class="info-card">
+                    <h3>Seat Capacity Analytics</h3>
+                    <p>Average Capacity: ${averageCapacity}%</p>
+                </div>
+            `;
+        }
+
+        // Initialize the page content
+        displayRoutes();
+        displayAnalytics();
+    </script>
+</body>
+</html>

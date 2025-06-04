@@ -1,0 +1,83 @@
+const routesData = [
+  {
+    route: "Nairobi - Kisumu",
+    time: "8:00 AM",
+    availableBuses: 5,
+    availableSeats: 20,
+    occupiedSeats: 30
+  },
+  {
+    route: "Nairobi - Mombasa",
+    time: "9:00 AM",
+    availableBuses: 3,
+    availableSeats: 10,
+    occupiedSeats: 40
+  }
+];
+
+function displayRoutes() {
+  const routesSection = document.getElementById("routes");
+  let routesHTML = "<ul>";
+  routesData.forEach(route => {
+    routesHTML += `<li>${route.route} - ${route.time} - Available Buses: ${route.availableBuses}</li>`;
+  });
+  routesHTML += "</ul>";
+  routesSection.innerHTML = routesHTML;
+}
+
+function displayAnalytics() {
+  if (isAdmin()) {
+    const busAnalyticsSection = document.getElementById("bus-analytics");
+    const seatAnalyticsSection = document.getElementById("seat-analytics");
+
+    let totalAvailableBuses = 0;
+    let totalAvailableSeats = 0;
+    let totalOccupiedSeats = 0;
+
+    routesData.forEach(route => {
+      totalAvailableBuses += route.availableBuses;
+      totalAvailableSeats += route.availableSeats;
+      totalOccupiedSeats += route.occupiedSeats;
+    });
+
+    busAnalyticsSection.innerHTML = `<p>Total Available Buses: ${totalAvailableBuses}</p>`;
+    seatAnalyticsSection.innerHTML = `
+      <p>Total Available Seats: ${totalAvailableSeats}</p>
+      <p>Total Occupied Seats: ${totalOccupiedSeats}</p>`;
+  } else {
+    const analyticsSection = document.getElementById("analytics");
+    analyticsSection.innerHTML = "<p>Analytics available to admins only.</p>";
+  }
+}
+
+function isAdmin() {
+  // Replace with actual authentication check
+  return true;
+}
+
+// 🌦️ Fetch and display real-time weather
+function fetchWeather() {
+  const WEATHER_API_KEY = ''
+  const CITY = 'Nairobi';
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${WEATHER_API_KEY}&units=metric`;
+
+  fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error('Weather fetch failed');
+      return response.json();
+    })
+    .then(data => {
+      const weatherDesc = data.weather[0].description;
+      const temp = data.main.temp;
+      const trafficUpdate = document.getElementById('traffic-update');
+      trafficUpdate.innerHTML += `
+        <p><i class="fas fa-cloud-sun"></i> Weather in ${CITY}: ${weatherDesc}, ${temp}°C</p>
+      `;
+    })
+    .catch(error => console.error('Weather error:', error));
+}
+
+// Run functions
+displayRoutes();
+displayAnalytics();
+fetchWeather();

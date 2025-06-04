@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Routes</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="client/landing page.html">Home</a></li>
+                <li><a href="booking.html">Bookings</a></li>
+                <li><a href="routes.html">Routes</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Available Routes</h1>
+        <div class="route-container" id="routes">
+            <!-- Dynamic route cards injected here -->
+        </div>
+
+        <div class="info-container" id="info-analytics">
+            <!-- Dynamic analytics info cards injected here -->
+        </div>
+    </main>
+    <footer>
+        <p>Our mission is to connect people and businesses with safe and affordable transport options.</p>
+    </footer>
+
+    
+        <script>
+            const routesData = {
+                "Nairobi to Upcountry Routes": [
+                    {
+                        route: "Nairobi - Kisumu",
+                        time: "8:00 AM",
+                        availableBuses: 5,
+                        availableSeats: 20,
+                        occupiedSeats: 30
+                    },
+                    {
+                        route: "RT105",
+                        time: "7:00 AM",
+                        availableBuses: 15,
+                        availableSeats: 450,
+                        occupiedSeats: 50
+                    },
+                    {
+                        route: "RT66",
+                        time: "10:00 AM",
+                        availableBuses: 10,
+                        availableSeats: 300,
+                        occupiedSeats: 25
+                    },
+                    {
+                        route: "RT78",
+                        time: "11:00 AM",
+                        availableBuses: 8,
+                        availableSeats: 240,
+                        occupiedSeats: 10
+                    },
+                    {
+                        route: "RT008",
+                        time: "12:00 PM",
+                        availableBuses: 12,
+                        availableSeats: 360,
+                        occupiedSeats: 40
+                    },
+                    {
+                        route: "RT54",
+                        time: "1:00 PM",
+                        availableBuses: 20,
+                        availableSeats: 600,
+                        occupiedSeats: 90
+                    }
+                ],
+                "Coastal Routes": [
+                    {
+                        route: "Nairobi - Mombasa",
+                        time: "9:00 AM",
+                        availableBuses: 3,
+                        availableSeats: 10,
+                        occupiedSeats: 40
+                    }
+                ]
+            };
+    
+            function displayRoutes() {
+                const routesSection = document.getElementById("routes");
+                let routesHTML = "";
+                for (const region in routesData) {
+                    routesHTML += `<h2>${region}</h2>`;
+                    routesData[region].forEach(route => {
+                        routesHTML += `
+                            <div class="route-card">
+                                <h3>${route.route}</h3>
+                                <p>Departure: ${route.time}</p>
+                                <p>Available Buses: ${route.availableBuses}</p>
+                                <p>Available Seats: ${route.availableSeats}</p>
+                                <p>Occupied Seats: ${route.occupiedSeats}</p>
+                            <p>Occupied Seats: ${route.occupiedSeats}</p>
+                            <div class="capacity-bar">
+                                <div class="filled" style="width: ${route.occupiedSeats / (route.availableSeats + route.occupiedSeats) * 100}%"></div>
+                            </div>
+                            <img src="maps/nairobi-kisumu.png" alt="Nairobi to Kisumu route map" />
+                            <span class="availability high">High Availability</span>
+                        </div>
+                    `;
+                    });
+                }
+                routesSection.innerHTML = routesHTML;
+            }
+    
+            function displayAnalytics() {
+                const analyticsSection = document.getElementById("info-analytics");
+    
+                // Example traffic and weather data - replace with real API data if available
+                const traffic = "Moderate";
+                const weather = "Sunny";
+    
+                // Calculate seat capacity as a percentage
+                let totalAvailableSeats = 0;
+                let totalOccupiedSeats = 0;
+                let totalRoutes = 0;
+                for (const region in routesData) {
+                    totalRoutes += routesData[region].length;
+                    routesData[region].forEach(route => {
+                        totalAvailableSeats += route.availableSeats;
+                        totalOccupiedSeats += route.occupiedSeats;
+                    });
+                }
+                const averageCapacity = ((totalOccupiedSeats / (totalAvailableSeats + totalOccupiedSeats)) * 100).toFixed(2);
+    
+                analyticsSection.innerHTML = `
+                    <div class="info-card">
+                        <h3>Total Routes</h3>
+                        <p>${totalRoutes}</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Traffic Update</h3>
+                        <p>Traffic: ${traffic}</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Weather</h3>
+                        <p>Weather: ${weather}</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Seat Capacity Analytics</h3>
+                        <p>Average Capacity: ${averageCapacity}%</p>
+                    </div>
+                `;
+            }
+    
+            // Initialize the page content
+            displayRoutes();
+            displayAnalytics();
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,230 @@
+/* styles.css */
+
+/* Reset and base */
+* {
+  box-sizing: border-box;
+}
+body.booking-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9fafb;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: #004080;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 50px;
+  border-radius: 5px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffd700;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.account-icon img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+  transition: border-color 0.3s ease;
+}
+
+.account-icon img:hover {
+  border-color: #ffd700;
+}
+
+#login-form, #registration-form {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  color: #333;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  width: 250px;
+  z-index: 1001;
+}
+
+/* Main content */
+main {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Sections */
+section {
+  background: white;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+section h2 {
+  margin-bottom: 15px;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 5px;
+  font-weight: 700;
+}
+
+/* Availability & Booking Info containers */
+#availability div,
+.analytics-container > div {
+  display: inline-block;
+  width: 48%;
+  margin-bottom: 15px;
+}
+
+.analytics-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.analytics-container > div {
+  flex: 1 1 45%;
+  background: #e6f0ff;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.analytics-container h3 {
+  margin-bottom: 8px;
+  color: #004080;
+}
+
+/* Forms */
+form > div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #004080;
+  outline: none;
+}
+
+button {
+  background: #004080;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background: #003366;
+}
+
+/* Traffic update */
+#traffic-update p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+#traffic-update i {
+  color: #004080;
+  margin-right: 8px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #004080;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  nav ul li {
+    width: 100%;
+  }
+  #availability div,
+  .analytics-container > div {
+    width: 100%;
+  }
+  .analytics-container {
+    flex-direction: column;
+  }
+  main {
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Management System</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  
+    <header>
+        <div class="logo">
+            <img src="10550142.jpg" alt="Sacco Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Fleet</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="client/booking.html">Bookings</a></li>
+                <li><a href="../routes.html">Routes</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <div class="sign-in-out">
+                <button id="sign-in-button">Sign In</button>
+                <button id="enroll-button">Sign-up</button>
+            </div>
+            <div class="account-icon">
+                <span >Account</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to our Transport Management System</h1>
+            <p>Your trusted partner for efficient and reliable transportation solutions.</p>
+        </section>
+        
+
+        <section class="slideshow">
+            <h2>Personnel, Fleet and Routes</h2>
+            <div class="slideshow-container">
+                <div class="slide">
+                    <img src="cashless pay.jpeg" alt="Cashless Payment">
+                </div>
+                <div class="slide">
+                    <img src="young-adult-travelling-winter-time_23-2149211145.avif" alt="Clients">
+                </div>
+                <div class="slide">
+                    <img src="personel.avif" alt="Personel">
+                </div>
+            </div>
+
+                <!-- Login and Registration Forms -->
+        <div id="login-form" style="display: none;">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="Password">
+            <button id="login-button">Login</button>
+        </div>
+        <div id="registration-form" style="display: none;">
+            <h2>Register</h2>
+            <input type="text" id="reg-name" placeholder="Full Name">
+            <input type="email" id="reg-email" placeholder="Email">
+            <input type="password" id="reg-password" placeholder="Password">
+            <select id="reg-category">
+                <option value="passenger">Passenger</option>
+                <option value="admin">Admin</option>
+                <option value="accounts">Accounts</option>
+                <option value="employee">Employee</option>
+            </select>
+            <button id="register-button">Register</button>
+        </div>
+        </section>
+        
+
+        <section class="about-us">
+            <h2>About Us</h2>
+            <p>We are a transport management system dedicated to providing efficient
+                 and reliable transportation solutions. <br>
+                 Our mission is to connect people and businesses with safe and affordable transport options.<br>
+                
+                 At Velocity, we specialize in smart transport solutions that revolutionize fleet management.<br>
+                  Our advanced real-time tracking system ensures seamless and efficient transportation, 
+                  reducing delays and optimizing routes for both passengers and operators.<br>
+
+                 We are committed to enhancing urban mobility by integrating digital payments,
+                 
+                automated scheduling, and AI-driven analytics to improve overall transport efficiency.
+                <br>
+                 Our goal is to create a safer, more reliable, and eco-friendly transport ecosystem that benefits commuters, businesses, and transport providers alike.
+                 <br>
+
+                 With innovation at our core, we strive to bridge the gap between traditional transport systems and modern technology, <br>
+                 making mobility smarter, faster, and more accessible for everyone.</p>
+        </section>
+
+        <section class="routes">
+            <h2>Popular Routes</h2>
+            <ul class="route-list">
+                <li>
+                    <img src="freepik__modern-web-banner-nairobi-to-kisumu-bus-route-vibr__43513.jpeg" alt="Nairobi to Mombasa">
+                    <span>Nairobi to Mombasa</span>
+                </li>
+                <li>
+                    <img src="freepik__the-style-is-candid-image-photography-with-natural__7047.jpeg" alt="Kisumu to Nakuru">
+                    <span>Kisumu to Nakuru</span>
+                </li>
+                <li>
+                    <img src="kisumu.avif" alt="Eldoret to Nairobi">
+                    <span>Eldoret to Nairobi</span>
+                </li>
+                <li>
+                    <img src="ushago.jpeg" alt="Nairobi- Nyeri">
+                    <span>Nairobi- Nyeri</span>
+                </li>
+                
+            </ul>
+        </section>
+        
+        <section class="mission-vision-contacts">
+            <div class="card">
+                <h2>Mission Statement</h2>
+                <p>To provide a seamless, technology-enabled transport 
+                    management system that enhances efficiency, accountability, 
+                    and convenience for commuters and operators.</p>
+            </div>
+            <div class="card">
+                <h2>Vision Statement</h2>
+                <p>To revolutionize the transport sector through digital innovation,
+                     making mobility smarter and more efficient.</p>
+            </div>
+            <div class="card">
+                <h2>Contact Us</h2>
+            <p>Email:Velocity.info@gmail.com</p>  
+        <p>Phone : +2543578023</p>  
+    <P>Instagram @Velo_city_KE</P>
+<P>Facebook Velo_city_KE</P> 
+     </div>
+        </section>
+
+      
+    </main>
+    <footer>
+        <p>&copy; 2025 Transport Management System</p>
+    </footer>
+    <script>
+const signInButton = document.getElementById('sign-in-button');
+const signUpButton = document.getElementById('sign-up-button');
+const accountIcon = document.querySelector('.account-icon');
+let isLoggedIn = false;
+const registrationForm = document.getElementById('registration-form');
+const loginForm = document.getElementById('login-form');
+
+// Function to update UI based on login status
+function updateUI(userName = null) {
+    if (isLoggedIn) {
+        signInButton.textContent = 'Sign Out';
+        enrollButton.style.display = 'none';
+        accountIcon.style.display = 'block';
+        accountIcon.textContent = userName;
+    } else {
+        signInButton.textContent = 'Sign In';
+        enrollButton.style.display = 'inline-block';
+        accountIcon.style.display = 'none';
+        accountIcon.textContent = '';
+    }
+}
+
+// Function to redirect user based on category
+function redirectToCategory(category) {
+    switch (category) {
+        case 'admin':
+            window.location.href = 'client/admin.html';
+            break;
+        case 'accounts':
+            window.location.href = 'accounts.html';
+            break;
+        case 'employee':
+            window.location.href = 'employee.html';
+            break;
+        case 'passenger':
+        default:
+            window.location.href = 'routes.html';
+            break;
+    }
+}
+
+// Initial UI update
+updateUI();
+
+enrollButton.addEventListener('click', function() {
+    registrationForm.style.display = 'block';
+    loginForm.style.display = 'none';
+});
+
+signInButton.addEventListener('click', function() {
+    loginForm.style.display = 'block';
+    registrationForm.style.display = 'none';
+});
+
+const loginButton = document.getElementById('login-button');
+loginButton.addEventListener('click', function() {
+    console.log('Login button clicked - inside event listener');
+   // test console.log('Login button clicked');//
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email, password: password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            isLoggedIn = true;
+            updateUI(data.name);
+            alert('Sign in successful!');
+            redirectToCategory(data.category); // Redirect based on category
+        } else {
+            isLoggedIn = false;
+            updateUI();
+            alert('Sign in failed: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during sign in.');
+    });
+});
+
+const registerButton = document.getElementById('register-button');
+registerButton.addEventListener('click', function() {
+    console.log('Register button clicked');
+    const name = document.getElementById('reg-name').value;
+    const email = document.getElementById('reg-email').value;
+    const password = document.getElementById('reg-password').value;
+    const category = document.getElementById('reg-category').value; // Get selected category
+
+    fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: name, email: email, password: password, category: category }) // Send category to backend
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Registration successful!');
+        } else {
+            alert('Registration failed: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during registration.');
+    });
+});
+</script>
+</body>
+</html>

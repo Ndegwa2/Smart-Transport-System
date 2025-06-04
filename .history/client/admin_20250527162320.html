@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin Dashboard - Transport System</title>
+<style>
+  /* Basic Reset */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; font-family: Arial, sans-serif; background: #f4f6f8;
+    display: flex;
+    height: 100vh;
+    color: #333;
+  }
+  /* Sidebar */
+  #sidebar {
+    width: 220px;
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  #sidebar h2 {
+    margin-top: 0;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  #sidebar div {
+    margin-bottom: 15px;
+  }
+  #sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  #sidebar a:hover {
+    background-color: #34495e;
+  }
+  /* Main Content */
+  #main-content {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+  }
+  h1 {
+    margin-top: 0;
+  }
+  /* Routes list */
+  #routes ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  #routes li {
+    background: white;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  }
+  /* Analytics section */
+  #analytics {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+  }
+  .analytics-card {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 6px;
+    flex: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  .analytics-card p {
+    margin: 8px 0;
+  }
+  /* Weather & traffic */
+  #traffic-update {
+    margin-top: 20px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+  <nav id="sidebar">
+    <h2>Admin Dashboard</h2>
+    <div id="fleet_management"><a href="#">Fleet Management</a></div>
+    <div id="employee_management"><a href="#">Employee Management</a></div>
+    <div id="passenger_services"><a href="#">Passenger Services</a></div>
+    <div id="route_schedule_management"><a href="#">Route Schedule</a></div>
+    <div id="ticketing_revenue_tracking"><a href="#">Ticketing & Revenue</a></div>
+    <div id="reports_analytics"><a href="#">Reports & Analytics</a></div>
+    <div id="system_settings_security"><a href="#">Settings & Security</a></div>
+  </nav>
+
+  <main id="main-content">
+    <h1>Available Routes</h1>
+    <section id="routes"></section>
+
+    <section id="analytics">
+      <div class="analytics-card" id="bus-analytics"></div>
+      <div class="analytics-card" id="seat-analytics"></div>
+    </section>
+
+    <section id="traffic-update">Loading weather...</section>
+  </main>
+
+<script>
+  // Cache DOM elements once
+  const routesSection = document.getElementById("routes");
+  const busAnalyticsSection = document.getElementById("bus-analytics");
+  const seatAnalyticsSection = document.getElementById("seat-analytics");
+  const analyticsSection = document.getElementById("analytics");
+  const trafficUpdate = document.getElementById('traffic-update');
+
+  // Fixed routes data with seats info
+  const routesData = [
+    { route: "Nairobi to Kisumu", time: "6:00 AM", availableBuses: 5, availableSeats: 120, occupiedSeats: 30 },
+    { route: "Mombasa to Nairobi", time: "7:00 AM", availableBuses: 3, availableSeats: 90, occupiedSeats: 20 },
+    { route: "Nakuru to Eldoret", time: "8:00 AM", availableBuses: 2, availableSeats: 60, occupiedSeats: 15 }
+  ];
+
+  function displayRoutes() {
+    let routesHTML = "<ul>";
+    routesData.forEach(route => {
+      routesHTML += `<li><strong>${route.route}</strong> - Departure: ${route.time} - Available Buses: ${route.availableBuses}</li>`;
+    });
+    routesHTML += "</ul>";
+    routesSection.innerHTML = routesHTML;
+  }
+
+  function displayAnalytics() {
+    if (isAdmin()) {
+      let totalAvailableBuses = 0;
+      let totalAvailableSeats = 0;
+      let totalOccupiedSeats = 0;
+
+      routesData.forEach(route => {
+        totalAvailableBuses += route.availableBuses;
+        totalAvailableSeats += route.availableSeats;
+        totalOccupiedSeats += route.occupiedSeats;
+      });
+
+      busAnalyticsSection.innerHTML = `<h3>Total Available Buses</h3><p>${totalAvailableBuses}</p>`;
+      seatAnalyticsSection.innerHTML = `
+        <h3>Seats Info</h3>
+        <p>Total Available Seats: ${totalAvailableSeats}</p>
+        <p>Total Occupied Seats: ${totalOccupiedSeats}</p>`;
+    } else {
+      analyticsSection.textContent = "Analytics available to admins only.";
+    }
+  }
+
+  function isAdmin() {
+    // Placeholder for real auth check
+    return true;
+  }
+
+  function fetchWeather() {
+    const WEATHER_API_KEY = 'a9232d8b5b75e6c17a3560c1dd3803f4';  // Use your own key here!
+    const CITY = 'Nairobi';
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${WEATHER_API_KEY}&units=metric`;
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error('Weather fetch failed');
+        return response.json();
+      })
+      .then(data => {
+        const weatherDesc = data.weather[0].description;
+        const temp = data.main.temp;
+        trafficUpdate.innerHTML = `
+          <p><strong>Weather in ${CITY}:</strong> ${weatherDesc}, ${temp}°C</p>
+        `;
+      })
+      .catch(error => {
+        console.error('Weather error:', error);
+        trafficUpdate.textContent = "Failed to load weather data.";
+      });
+  }
+
+  // Initialize the page content on DOM ready
+  document.addEventListener("DOMContentLoaded", () => {
+    displayRoutes();
+    displayAnalytics();
+    fetchWeather();
+
+    // Attach event listeners for admin sidebar links to show alert for now
+    const adminDashboardSections = document.querySelectorAll('#fleet_management a, #employee_management a, #passenger_services a, #route_schedule_management a, #ticketing_revenue_tracking a, #reports_analytics a, #system_settings_security a');
+    adminDashboardSections.forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        alert('This feature is not yet implemented.');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

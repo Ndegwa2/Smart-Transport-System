@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Management System</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  
+    <header>
+        <div class="logo">
+            <img src="10550142.jpg" alt="Sacco Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Fleet</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="booking.html">Bookings</a></li>
+                <li><a href="../routes.html">Routes</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <div class="sign-in-out">
+                <button id="sign-in-button">Sign In</button>
+                <button id="enroll-button">Sign-up</button>
+            </div>
+            <div class="account-icon">
+                <span >Account</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to our Transport Management System</h1>
+            <p>Your trusted partner for efficient and reliable transportation solutions.</p>
+
+             <!-- Login and Registration Forms -->
+        <div id="login-form" style="display: none;">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="Password">
+            <button id="login-button">Login</button>
+        </div>
+        <div id="registration-form" style="display: none;">
+            <h2>SIgn up!</h2>
+            <input type="text" id="reg-name" placeholder="Full Name">
+            <input type="email" id="reg-email" placeholder="Email">
+            <input type="password" id="reg-password" placeholder="Password">
+            <select id="reg-category">
+                <option value="passenger">Passenger</option>
+                <option value="admin">Admin</option>
+                <option value="accounts">Accounts</option>
+                <option value="employee">Employee</option>
+            </select>
+            <button id="register-button">Register</button>
+        </div>
+        </section>
+        
+
+        <section class="slideshow">
+            <h2>Personnel, Fleet and Routes</h2>
+            <div class="slideshow-container">
+                <div class="slide">
+                    <img src="cashless pay.jpeg" alt="Cashless Payment">
+                </div>
+                <div class="slide">
+                    <img src="young-adult-travelling-winter-time_23-2149211145.avif" alt="Clients">
+                </div>
+                <div class="slide">
+                    <img src="personel.avif" alt="Personel">
+                </div>
+            </div>
+
+          
+        </section>
+        
+
+        <section class="about-us">
+            <h2>About Us</h2>
+            <p>We are a transport management system dedicated to providing efficient
+                 and reliable transportation solutions. <br>
+                 Our mission is to connect people and businesses with safe and affordable transport options.<br>
+                
+                 At Velocity, we specialize in smart transport solutions that revolutionize fleet management.<br>
+                  Our advanced real-time tracking system ensures seamless and efficient transportation, 
+                  reducing delays and optimizing routes for both passengers and operators.<br>
+
+                 We are committed to enhancing urban mobility by integrating digital payments,
+                 
+                automated scheduling, and AI-driven analytics to improve overall transport efficiency.
+                <br>
+                 Our goal is to create a safer, more reliable, and eco-friendly transport ecosystem that benefits commuters, businesses, and transport providers alike.
+                 <br>
+
+                 With innovation at our core, we strive to bridge the gap between traditional transport systems and modern technology, <br>
+                 making mobility smarter, faster, and more accessible for everyone.</p>
+        </section>
+
+        <section class="routes">
+            <h2>Popular Routes</h2>
+            <ul class="route-list">
+                <li>
+                    <img src="freepik__modern-web-banner-nairobi-to-kisumu-bus-route-vibr__43513.jpeg" alt="Nairobi to Mombasa">
+                    <span>Nairobi to Mombasa</span>
+                </li>
+                <li>
+                    <img src="freepik__the-style-is-candid-image-photography-with-natural__7047.jpeg" alt="Kisumu to Nakuru">
+                    <span>Kisumu to Nakuru</span>
+                </li>
+                <li>
+                    <img src="kisumu.avif" alt="Eldoret to Nairobi">
+                    <span>Eldoret to Nairobi</span>
+                </li>
+                <li>
+                    <img src="ushago.jpeg" alt="Nairobi- Nyeri">
+                    <span>Nairobi- Nyeri</span>
+                </li>
+                
+            </ul>
+        </section>
+        
+        <section class="mission-vision-contacts">
+            <div class="card">
+                <h2>Mission Statement</h2>
+                <p>To provide a seamless, technology-enabled transport 
+                    management system that enhances efficiency, accountability, 
+                    and convenience for commuters and operators.</p>
+            </div>
+            <div class="card">
+                <h2>Vision Statement</h2>
+                <p>To revolutionize the transport sector through digital innovation,
+                     making mobility smarter and more efficient.</p>
+            </div>
+            <div class="card">
+                <h2>Contact Us</h2>
+            <p>Email:Velocity.info@gmail.com</p>  
+        <p>Phone : +2543578023</p>  
+    <P>Instagram @Velo_city_KE</P>
+<P>Facebook Velo_city_KE</P> 
+     </div>
+        </section>
+
+      
+    </main>
+    <footer>
+        <p>&copy; 2025 Transport Management System</p>
+    </footer>
+    <script>
+const signInButton = document.getElementById('sign-in-button');
+const enrollButton = document.getElementById('enroll-button');
+const accountIcon = document.querySelector('.account-icon');
+const registrationForm = document.getElementById('registration-form');
+const loginForm = document.getElementById('login-form');
+let isLoggedIn = false;
+
+// Function to update UI after login
+function updateUI(userName = null) {
+    if (isLoggedIn) {
+        signInButton.textContent = 'Sign Out';
+        enrollButton.style.display = 'none';
+        accountIcon.style.display = 'block';
+        accountIcon.textContent = userName;
+    } else {
+        signInButton.textContent = 'Sign In';
+        enrollButton.style.display = 'inline-block';
+        accountIcon.style.display = 'none';
+        accountIcon.textContent = '';
+    }
+}
+
+// Function to redirect user based on category
+function redirectToCategory(category) {
+    const pages = {
+        'admin': 'client/admin.html',
+        'accounts': 'accounts.html',
+        'employee': 'employee.html',
+        'passenger': 'routes.html'
+    };
+    window.location.href = pages[category] || 'routes.html';
+}
+
+// Ensure UI is updated correctly
+updateUI();
+
+// Show Registration Form
+enrollButton.addEventListener('click', function() {
+    registrationForm.style.display = 'block';
+    loginForm.style.display = 'none';
+});
+
+// Show Login Form
+signInButton.addEventListener('click', function() {
+    if (isLoggedIn) {
+        isLoggedIn = false;
+        updateUI();
+        alert('Signed out successfully!');
+    } else {
+        loginForm.style.display = 'block';
+        registrationForm.style.display = 'none';
+    }
+});
+
+// Login Functionality
+document.getElementById('login-button').addEventListener('click', function() {
+    const username = document.getElementById('login-username').value.trim();
+    const password = document.getElementById('login-password').value.trim();
+
+    if (!username || !password) {
+        alert('Please enter both username and password.');
+        return;
+    }
+
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            isLoggedIn = true;
+            updateUI(data.name);
+            alert('Sign in successful!');
+            redirectToCategory(data.category);
+        } else {
+            alert('Sign in failed: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during sign in.');
+    });
+});
+
+// Registration Functionality
+document.getElementById('register-button').addEventListener('click', function() {
+    const name = document.getElementById('reg-name').value.trim();
+    const username = document.getElementById('reg-username').value.trim();
+    const password = document.getElementById('reg-password').value.trim();
+    const category = document.getElementById('reg-category').value;
+
+    if (!name || !username || !password) {
+        alert('Please fill out all fields.');
+        return;
+    }
+
+    fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, username, password, category })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Registration successful!');
+            registrationForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        } else {
+            alert('Registration failed: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during registration.');
+    });
+});
+
+</script>
+</body>
+</html>

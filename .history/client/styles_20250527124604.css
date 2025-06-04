@@ -1,0 +1,96 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #004d40;
+  color: white;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  padding: 2rem;
+}
+
+.route-container h2 {
+  margin-top: 2rem;
+  color: #00796b;
+}
+
+.route-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.capacity-bar {
+  height: 10px;
+  background-color: #ddd;
+  margin: 10px 0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.capacity-bar .filled {
+  height: 100%;
+  background-color: #4caf50;
+}
+
+.availability {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.availability.high {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.availability.low {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+.route-card img {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 10px;
+}
+
+.info-container {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.info-card {
+  background-color: #e0f2f1;
+  padding: 1rem;
+  border-radius: 10px;
+  flex: 1 1 200px;
+}
+
+footer {
+  background: #004d40;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}

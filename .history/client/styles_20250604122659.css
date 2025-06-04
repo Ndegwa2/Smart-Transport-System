@@ -1,0 +1,141 @@
+/* styles.css */
+
+/* Reset and base */
+* {
+  box-sizing: border-box;
+}
+body.booking-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9fafb;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: #004080;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 50px;
+  border-radius: 5px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffd700;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.account-icon img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+  transition: border-color 0.3s ease;
+}
+
+.account-icon img:hover {
+  border-color: #ffd700;
+}
+
+#login-form, #registration-form {
+  position: absolute;
+  top: 50px;
+}
+
+.route-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the start */
+    width: 340px; /* Adjust based on card width + margin */
+    margin: 0 auto; /* Center the route list */
+}
+
+.route-card {
+    flex-basis: calc(50% - 20px); /* Two cards per row, accounting for margin */
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.route-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.route-card span {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Slideshow */
+.slideshow-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: 300px;
+  margin-right: 10px;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+}
+
+/* Mission, Vision, Contacts */
+.mission-vision-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  width: 30%;
+  min-width: 250px;
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Management System</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="10550142.jpg" alt="Sacco Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Fleet</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="client/booking.html">Bookings</a></li>
+                <li><a href="../routes.html">Routes</a></li>
+            </ul>
+        </nav>
+        <div class="account">
+            <div class="sign-in-out">
+                <button id="sign-in-button">Sign In</button>
+                <button id="enroll-button">Sign-up</button>
+            </div>
+            <div class="account-icon" style="display: none;">Account</div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to our Transport Management System</h1>
+            <p>Your trusted partner for efficient and reliable transportation solutions.</p>
+        </section>
+
+        <!-- Login and Registration Forms -->
+        <div id="login-form" style="display: none;">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="Password">
+            <button id="login-button">Login</button>
+        </div>
+        <div id="registration-form" style="display: none;">
+            <h2>Register</h2>
+            <input type="text" id="reg-name" placeholder="Full Name">
+            <input type="email" id="reg-email" placeholder="Email">
+            <input type="password" id="reg-password" placeholder="Password">
+            <select id="reg-category">
+                <option value="passenger">Passenger</option>
+                <option value="admin">Admin</option>
+                <option value="accounts">Accounts</option>
+                <option value="employee">Employee</option>
+            </select>
+            <button id="register-button">Register</button>
+        </div>
+
+        <section class="slideshow">
+            <h2>Personnel, Fleet and Routes</h2>
+            <div class="slideshow-container">
+                <div class="slide"><img src="cashless_pay.jpeg" alt="Cashless Payment"></div>
+                <div class="slide"><img src="clients.avif" alt="Clients"></div>
+                <div class="slide"><img src="personnel.avif" alt="Personnel"></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Transport Management System</p>
+    </footer>
+
+    <script>
+        const signInButton = document.getElementById('sign-in-button');
+        const enrollButton = document.getElementById('enroll-button');
+        const accountIcon = document.querySelector('.account-icon');
+        const loginForm = document.getElementById('login-form');
+        const registrationForm = document.getElementById('registration-form');
+        let isLoggedIn = false;
+
+        function updateUI(userName = null) {
+            if (isLoggedIn) {
+                signInButton.textContent = 'Sign Out';
+                enrollButton.style.display = 'none';
+                accountIcon.style.display = 'block';
+                accountIcon.textContent = userName;
+            } else {
+                signInButton.textContent = 'Sign In';
+                enrollButton.style.display = 'inline-block';
+                accountIcon.style.display = 'none';
+                accountIcon.textContent = '';
+            }
+        }
+
+        function redirectToCategory(category) {
+            const paths = {
+                'admin': 'client/admin.html',
+                'accounts': 'accounts.html',
+                'employee': 'employee.html',
+                'passenger': 'routes.html'
+            };
+            window.location.href = paths[category] || 'routes.html';
+        }
+
+        signInButton.addEventListener('click', function() {
+            loginForm.style.display = loginForm.style.display === 'block' ? 'none' : 'block';
+            registrationForm.style.display = 'none';
+        });
+
+        enrollButton.addEventListener('click', function() {
+            registrationForm.style.display = registrationForm.style.display === 'block' ? 'none' : 'block';
+            loginForm.style.display = 'none';
+        });
+
+        document.getElementById('login-button').addEventListener('click', function() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    isLoggedIn = true;
+                    updateUI(data.name);
+                    alert('Sign in successful!');
+                    redirectToCategory(data.category);
+                } else {
+                    alert('Sign in failed: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('register-button').addEventListener('click', function() {
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const category = document.getElementById('reg-category').value;
+            fetch('http://localhost:3000/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password, category })
+            })
+            .then(response => response.json())
+            .then(data => alert(data.success ? 'Registration successful!' : 'Registration failed: ' + data.message))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
